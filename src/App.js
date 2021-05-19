@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+
+import HeroSectionContainer from "./components/HeroSectionContainer";
+import CardsContainer from "./components/CardsContainer";
+import Contact from "./components/Contact";
+import Feature from "./components/Feature";
+import { useSpring, animated } from "react-spring";
+import NavBar from "./components/NavBar";
 
 function App() {
+  const props = useSpring({ from: { opacity: 0 }, to: { opacity: 1 }, config: { delay: 2500, duration: 2500 } })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeroSectionContainer />
+
+      <animated.div style={props}>
+        <CardsContainer />
+
+        <Feature />
+        <Contact />
+
+      </animated.div>
     </div>
   );
 }
